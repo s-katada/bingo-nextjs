@@ -1,0 +1,16 @@
+# direnv
+.direnv/
+
+# Nix
+result
+result-*
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+*.log
+.env
+.env.local
+.DS_Store
