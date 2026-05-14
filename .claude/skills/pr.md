@@ -36,15 +36,15 @@ description: プロジェクトの PR テンプレート (.github/PULL_REQUEST_T
 
 ## タイトル
 
-Conventional Commits 形式に従う (`/commit` スキルと同じルール):
+Conventional Commits 形式に従う (`/commit` スキルと同じルール、scope は使わない):
 
 ```
-<type>(<scope>): <subject>
+<type>: <subject>
 ```
 
 例:
-- `feat(card): ビンゴカード生成ロジックを追加`
-- `chore(nix): Node.js 26 を devShell に追加`
+- `feat: ビンゴカード生成ロジックを追加`
+- `chore: Node.js 26 を devShell に追加`
 - `docs: README にセットアップ手順を追加`
 
 70 文字以内。詳細は本文へ。
@@ -84,7 +84,7 @@ Closes #<N>
 ## heredoc テンプレ
 
 ```bash
-gh pr create --title "<type>(<scope>): <subject>" --body "$(cat <<'EOF'
+gh pr create --title "<type>: <subject>" --body "$(cat <<'EOF'
 ## 概要
 
 ...

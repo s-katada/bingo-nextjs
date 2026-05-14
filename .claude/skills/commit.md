@@ -14,7 +14,7 @@ description: Conventional Commits 規約に沿ったコミットメッセージ�
    - `git diff` (unstaged)
    - `git diff --staged` (staged)
    - `git log --oneline -10` (既存コミットスタイルの確認)
-2. 変更内容を要約し、適切な `type` と `scope` を決定する
+2. 変更内容を要約し、適切な `type` を決定する
 3. コミットメッセージを下記フォーマットで作成
 4. `git add` で関連ファイルのみをステージ (`-A` や `.` は避ける)
 5. heredoc で `git commit -m` を実行
@@ -23,7 +23,7 @@ description: Conventional Commits 規約に沿ったコミットメッセージ�
 ## フォーマット
 
 ```
-<type>(<scope>): <subject>
+<type>: <subject>
 
 <body (任意)>
 
@@ -31,10 +31,11 @@ description: Conventional Commits 規約に沿ったコミットメッセージ�
 ```
 
 - `<type>`: 下記一覧から選ぶ
-- `<scope>`: 影響範囲 (任意)。例: `card`, `host`, `room`, `api`, `ci`, `nix`, `deps`
-- `<subject>`: 50文字程度、命令形、日本語可、末尾ピリオドなし、先頭は小文字 (日本語は気にしない)
+- `<subject>`: 50文字程度、命令形、日本語可、末尾ピリオドなし
 - `<body>`: 空行を挟んで「なぜ」を中心に記述 (任意)
 - `<footer>`: BREAKING CHANGE: ... / Closes #N / Refs #N など
+
+scope (`<type>(<scope>): ...`) は **原則使わない**。type だけで十分に分類できる。
 
 ## type 一覧
 
@@ -49,27 +50,13 @@ description: Conventional Commits 規約に沿ったコミットメッセージ�
 | `test` | テストの追加・修正 |
 | `build` | ビルドシステム / 依存関係の変更 |
 | `ci` | CI 設定の変更 |
-| `chore` | 上記に該当しない雑務 (Nix 環境構築、`.gitignore` 等) |
+| `chore` | 上記に該当しない雑務 (Nix / `.gitignore` / `.github/` / `.claude/` 等の設定全般) |
 | `revert` | 以前のコミットの取り消し |
-
-## scope 例 (本プロジェクト)
-
-- `nix`: flake.nix, devShell 周り
-- `card`: ビンゴカード関連
-- `host`: ホスト画面
-- `play`: プレイヤー画面
-- `room`: ルーム作成/参加
-- `api`: API ルート
-- `realtime`: SSE/WebSocket
-- `ui`: 共通 UI コンポーネント
-- `deps`: 依存パッケージ
-- `claude`: `.claude/` 配下の Claude Code 設定
-- `gh`: `.github/` 配下
 
 ## 例
 
 ```
-feat(card): ビンゴカード生成ロジックを追加
+feat: ビンゴカード生成ロジックを追加
 
 5x5 のカードを B/I/N/G/O 列ごとに重複なく抽選する。
 シード可能にしてテストで決定的に検証できるようにした。
@@ -78,11 +65,11 @@ Closes #7
 ```
 
 ```
-chore(nix): Node.js 26.1.0 を devShell に追加
+chore: Node.js 26.1.0 を devShell に追加
 ```
 
 ```
-fix(realtime): SSE 切断時に EventSource を再接続するよう修正
+fix: SSE 切断時に EventSource を再接続するよう修正
 
 Closes #15
 ```
@@ -103,7 +90,7 @@ Closes #15
 
 ```bash
 git commit -m "$(cat <<'EOF'
-<type>(<scope>): <subject>
+<type>: <subject>
 
 <body>
 
