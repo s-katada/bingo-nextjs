@@ -1,8 +1,3 @@
 export function range(start: number, end: number): number[] {
-  if (end <= start) return [];
-  const result: number[] = [];
-  for (let i = start; i < end; i++) {
-    result.push(i);
-  }
-  return result;
+  return Array.from({ length: Math.max(0, end - start) }, (_, i) => start + i);
 }
