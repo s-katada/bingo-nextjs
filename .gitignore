@@ -3,9 +3,6 @@
 # direnv
 .direnv/
 
-# ネストしたサブクローン (誤って作成された別 git リポジトリ。整理待ち)
-/bingo-nextjs/
-
 # Nix
 result
 result-*
