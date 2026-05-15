@@ -9,7 +9,11 @@
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "biome check --write .",
-    "lint:ci": "biome ci ."
+    "lint:ci": "biome ci .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -19,10 +23,17 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.6",
+    "@vitest/ui": "^4.1.6",
+    "happy-dom": "^20.9.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.6"
   }
 }
